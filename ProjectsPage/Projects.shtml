@@ -1,0 +1,74 @@
+<head>
+    <link rel="stylesheet" href="../GeneralFiles/nav.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../ProjectsPage/projects.css">
+</head>
+
+<div class="topnav">
+  <a href="../index.html">Home</a>
+  <a href="../ResumePage/ResumeRadliff.pdf">Resume</a>
+  <a class="active" href="../ProjectsPage/Projects.shtml">Projects</a>
+  <a href="../ToysandToolsPage/Toys&Tools.shtml">Toys & Tools</a>
+  <a href="../PhotosAndRenders/Photos&Renders.shtml">Photos & Renders</a>
+  <a href="#about">Games</a>
+  <p style="text-align: left;">Aaron Radliff</p>
+</div>
+
+<button class="collapsible">This Website | 06/25 - Present</button>
+<div class="content">
+  <label for="toolsList"><b>Tools</b></label>
+  <ul id="toolsList">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JS</li>
+  </ul>
+  <p><b>Description:</b> <br> 
+  I wanted to build this website so I would have a place to store all of my professional and
+personal projects. I couldn't resist the challenge of building a fully functional website from scratch.</p>
+  <img src="../PhotosAndRenders/gallery/AmericanCyp.jpg" width="25%"; height="auto">
+</div>
+
+
+
+<button class="collapsible">Split Encryption Key System | 01/25 - 05/25</button>
+<div class="content">
+  <p>This website was a lot of work.</p>
+  <img src="../PhotosAndRenders/gallery/AmericanCyp.jpg" width="25%"; height="auto">
+</div>
+
+
+<button class="collapsible">C Memory Allocator From Scratch | DATE - DATE </button>
+<div class="content">
+  <p>This website was a lot of work.</p>
+  <img src="../PhotosAndRenders/gallery/AmericanCyp.jpg" width="25%"; height="auto">
+</div>
+
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
+
+//Start with first col expanded
+  coll[0].classList.toggle("active");
+    var content = coll[0].nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+
+</script>

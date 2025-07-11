@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="GeneralFiles/nav.css">
+</head>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="ResumePage/ResumeRadliff.pdf">Resume</a>
+  <a href="ProjectsPage/Projects.shtml">Projects</a>
+  <a href="#about">Toys & Tools</a>
+  <a href="PhotosAndRenders/Photos&Renders.shtml">Photos & Renders</a>
+  <a href="#about">Games</a>
+  <p style="text-align: left;">Aaron Radliff</p>
+</div>
+
+
+<div class="bgimg-1">
+ <div class="caption">
+  <span id="helloDoc" class="border">Hiya</span>
+  </div>
+</div>
+
+
+
+<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+  <h3 style="text-align:center;">The Home of Everything I Do</h3>
+  <p>I'm Aaron Radliff and this is where I show off just about everything I do. I spend most of my time
+    building weird games and trying to answer unimportant questions with programming. I'm very interested
+    in software security and reverse engineering <i>(legally)</i>. I love to challenge myself
+    by designing and dissasembling network based application and systems <i>(also legally)</i>. I spend the rest of my time
+    hiking, taking photos, and 3d modeling. So there's plenty of that on here as well
+    <br><br>
+    You can find
+    <ol style="list-style: circle;">
+        <li>project writeups</li>
+        <li>small toys and tools</li>
+        <li>my resume</li>
+        <li>photography/3d renders</li>
+        <li>video games I've made</li>
+        <li>probably a few easter eggs</li>
+    </ol> 
+    <br>If you see anything wrong please 
+    let me know at <a href="mailto:aaronradliff@gmail.com">aaronradliff@gmail.com</a> </p> 
+</div>
+
+<div class="bgimg-2" onclick="window.location.href='ProjectsPage/Projects.shtml'">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">PROJECTS</span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>All of my projects largely vary in complexity and scale. Some of these I made before I knew
+    anything about data structures, code formatting, or even that there were other languages than c#. I keep most of my old projects on here
+    as I believe the most important part of programming is understanding and appreciating how far you've come.
+    That being said, I know most people do not want to sift through the code I wrote when I was 14.
+    So projects that are not up to my current standards get moved to <a href="ToysandToolsPage/Toys&Tools.shtml">Toys&Tools</a>
+    . This cuts down on clutter while allowing me to keep alive the projects that got me here today
+  </p>
+  </div>
+</div>
+
+<div class="bgimg-3" onclick="window.location.href='ToysandToolsPage/Toys&Tools.shtml'">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">TOYS & TOOLS</span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>As stated above, Toys & Tools are small or old projects that aren't up
+    to my standards to qualify as a project. Most of these are small webpages that I made
+    to solve a very specific task. Things like the <a href="gpaCalc.html">GPA Calculator</a>
+    I still use pretty regularly. To summarize, enjoy these at your own risk
+  </p>
+  </div>
+</div>
+
+
+<div class="bgimg-4" onclick="window.location.href='PhotosAndRenders/Photos&Renders.shtml'">
+ 
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">PHOTOS & RENDERS</span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>I've been cursed with this awful desire to be an artist even though I can't draw, paint, sculpt, sing, play an instrument,
+    or do anything with my hands that doesn't involve a computer. So I naturally fell in love with photography and Blender.
+    I am most definitely not very talented at either, but I think that's half of the fun. Sometimes it's just fun to pretend
+    to be an artist
+  </p>
+  </div>
+</div>
+
+
+
+
+<footer>Created by Aaron Radliff with HTML, JS, CSS, and love ♡ (and maybe a few tears) - Last updated: UPDATEDTIME</footer>
+
+<script>
+    let helloContent;
+    readHelloFile();
+    const helloInt = setInterval(ChangeHello,5000)
+
+    console.log(helloContent);
+    
+
+
+    async function readHelloFile()
+    {
+        fetch('GeneralFiles/hello.txt')
+        .then(response => {
+        // Check if the response was successful (e.g., status code 200-299)
+        if (!response.ok) {
+         throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.text(); // Returns a promise for the text content
+        })
+    .then(textData => {
+        //console.log("Received text:", textData);
+         helloContent = textData;
+     // Process the text data here
+         })
+    .catch(error => {
+     console.error("Error fetching or processing text:", error);
+         });
+    }
+
+    function ChangeHello()
+    {
+        let lines = helloContent.split('\n');
+        r = Math.floor(Math.random() * lines.length);
+        //console.log(lines[r]);
+        let hDoc = document.getElementById("helloDoc");
+        hDoc.textContent = lines[r];
+        
+    }
+</script>

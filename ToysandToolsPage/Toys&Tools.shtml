@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="toys.css">
+
+<button>Project</button>
+
+
+<div class="toy">
+    <img src="../PhotosAndRenders/gallery/AmericanCyp.jpg" style="width: 50%; height: auto; position: absolute; top: 0; left: 0;">
+    <h3 style="position: absolute; top: 0; right: 0; width: 50%; height: auto;">GPA Calc</h3>
+    <p style="position: absolute; top: 40; right: 0; width: 50%; height: auto; background-color: darkgrey;">Here's some random filler text about this project aaaaaaaaasdfsdf aaaaa aaaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaa
+        Sdfdsf sdgdfg dfh trh fdhdffh dh redfh redh hdfh dfhre hdfh rehdhfdrh df  sdfsdf sdf sdf sfde sgsgsdg
+        sgesg df esg dgeg  gsegfg erdg drghddrhddgfdg r dhdrh df g
+    </p>
+</div>

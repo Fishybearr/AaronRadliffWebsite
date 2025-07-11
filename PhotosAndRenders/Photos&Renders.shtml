@@ -1,0 +1,57 @@
+
+<head>
+    <link rel="stylesheet" href="../GeneralFiles/nav.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="photos.css">
+</head>
+
+<div class="topnav">
+  <a href="../index.html">Home</a>
+  <a href="../ResumePage/ResumeRadliff.pdf">Resume</a>
+  <a href="../ProjectsPage/Projects.shtml">Projects</a>
+  <a href="#about">Toys & Tools</a>
+  <a class="active" href="Photos&Renders.shtml">Photos & Renders</a>
+  <a href="#about">Games</a>
+  <p style="text-align: left;">Aaron Radliff</p>
+</div>
+
+
+
+<div class="header">
+  <h1>Some of my better Renders and Photos</h1>
+  <p>Note: Storing images is one of the blights of our society. I'm working
+    on a self hosted DCM solution so we can all access our own images without paying 
+    someone else to "keep them safe"
+  </p>
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="gallery/AmericanCyp.jpg" style="width:100%">
+    <img src="gallery/bear.jpg" style="width:100%">
+    <img src="gallery/birb.jpg" style="width:100%">
+    <img src="gallery/cyberHotel.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="gallery/fallForest.jpg" style="width:100%">
+    <img src="gallery/frog.jpg" style="width:100%">
+    <img src="gallery/Thumbs.jpg" style="width:100%">
+    <img src="gallery/SpaceGirl.jpg" style="width:100%">
+
+  </div>  
+  <div class="column">
+    <img src="gallery/tinyBurb.jpg" style="width:100%">
+     <img src="gallery/Jellyfish.jpg" style="width:100%">
+    <img src="gallery/penguins.jpg" style="width:100%">
+    
+
+  </div>
+  <div class="column">
+     <img src="gallery/CabinGoodish.jpg" style="width:100%">
+    <img src="gallery/Chimkin.jpg" style="width:100%">
+    <div class="ImgObj"> <img src="gallery/CyberHell.jpg" alt="">
+        <p>Cyber Hell</p>
+    </div>
+  </div>
+</div>

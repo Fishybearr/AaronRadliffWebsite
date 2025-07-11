@@ -1,0 +1,13 @@
+<head>
+    <link rel="stylesheet" href="GeneralFiles/nav.css">
+</head>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="ResumePage/ResumeRadliff.pdf">Resume</a>
+  <a href="../ProjectsPage/Projects.shtml">Projects</a>
+  <a href="#about">Toys & Tools</a>
+  <a href="#about">Photos & Renders</a>
+  <a href="#about">Games</a>
+  <p style="text-align: left;">Aaron Radliff</p>
+</div>

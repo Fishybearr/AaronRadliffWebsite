@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Binghamton Grade Calculator</title>
+</head>
+
+<style>
+    body
+    {
+        background-color: #004333;
+    }
+
+    #forJacks {
+
+
+        text-align: center;
+        font-style: italic;
+
+
+       /* border: 6px solid #ffa7d8; */
+        font-size: 20px;
+        padding: 10px;
+        width: 200px;
+        height: 20px;
+        margin: auto;
+    }
+
+    .button
+    {
+        background-color: #ffffff; /* Green */
+        border: none;
+        color: rgba(0, 90, 67, 100);
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1
+    {
+        background-color: white;
+        color: #004333;
+        border: 2px solid #282a2d;
+
+        border-radius: 8px;
+    }
+
+    .button1:hover
+    {
+        background-color: #6cc24a;
+        color: white;
+    }
+
+    input[type=number] {
+        width: 7%;
+        padding: 10px 10px;
+        margin: 3px 0;
+        box-sizing: border-box;
+        border: 2px solid #282a2d;
+        border-radius: 4px;
+    }
+
+    select {
+
+        position: relative;
+        width: 75px;
+        padding: 10px 10px;
+        border: 2px solid #282a2d;
+        color: #004333;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    label
+    {
+        background-color: #005a43;
+        border-radius: 10px;
+        border: 2px solid #282a2d;
+        padding: 10px;
+        width: 200px;
+        height: 10px;
+    }
+
+    .div1
+    {
+        background-color: #005a43;
+        border-radius: 10px;
+        border: 2px solid #282a2d;
+        padding: 10px;
+        width: max-content;
+        height: 10px;
+
+    }
+
+    .footer
+    {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(40, 42, 45, 0.5);
+        color: white;
+        text-align: center;
+
+    }
+
+    .header
+    {
+        text-align: center;
+        background: rgba(108, 194, 74, 0);
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+
+    /*
+    @media only screen and (max-device-width: 767px) {
+
+        [data-type="control_dropdown"] .form-input, [data-type="control_dropdown"] .form-input-wide {
+
+            width: 100% !important;
+
+        }
+
+    }
+
+     */
+
+
+
+
+
+
+</style>
+<body style="color: aliceblue">
+
+
+<div class="header">Harpur GPA Calculator</div>
+
+<p id="forJacks">For Jacks with ♡ <br></p>
+
+
+
+
+<button class="button button1" id="GenerateRows" onclick="GenRows2()">Add Classes</button>
+<button class="button button1" id="RemoveRow" onclick="RemoveRow()">Remove Last Row</button>
+<button class="button button1" onclick="CalculateRows()" id="CalcRows">Calculate Average</button>
+
+<div id = "totalOut" class="div divOld"></div>
+
+<div id = "totalCredits" class="div divOld"><br></div>
+
+<footer class="footer"> Legal Disclaimer: <br> This website/tool is not owned or endorsed in any way by Binghamton University or its subsidiaries</footer>
+
+
+<b><br><br></b>
+
+</body>
+
+
+
+
+
+<script>
+
+    //TODO: Show total of all credits
+
+   // document.getElementById("CalcRows").parentNode = null;
+
+    var possibleCreditsTotal = [];
+    var earnedCreditsTotal = [];
+
+    var listOfPossibleCreditDropdowns = [];
+    var listOfActualCreditDropdowns = [];
+
+    var gradeOptions = ["A","A-","B+","B","B-","C+","C","C-","D","F"]
+    var gradesAsCredits = [4.0,3.7,3.3,3.0,2.7,2.3,2.0,1.7,1.0,0.0]
+    var creditOptions = ["4.0","3.0","2.0","1.0"]
+
+    var gradesHolder = []
+
+   let classNum = 1;
+
+
+
+    //var numOfRows = document.getElementById("numOfRows")
+   //numOfRows.value = 1;
+    function GenerateRows()
+    {
+        document.getElementById("GenerateRows")
+
+        var rowsText = document.getElementById("GenerateRows")
+
+        //rowsText.parentNode.removeChild(rowsText);
+
+
+        for (let i = 0; i < numOfRows.value; i++)
+        {
+            document.body.innerHTML += "Class " +(i+1) + " "
+            addPossibleCreditsRow(i);
+
+            addActualCreditDropdowns(i);
+            document.body.innerHTML += "<br><br>"
+
+        }
+
+
+       // document.getElementById("numOfRows").parentNode.removeChild(document.getElementById("numOfRows"))
+        //document.getElementById("numOfRowsLabel").parentNode.removeChild(document.getElementById("numOfRowsLabel"))
+      //  document.body.appendChild(document.getElementById("CalcRows"))
+
+
+    }
+
+    function GenRows2()
+    {
+
+        var numOfRows = document.getElementById("numOfRows")
+
+       // document.body.innerHTML += "Class " +classNum + " "
+        addPossibleCreditsRow(classNum-1);
+
+        addActualCreditDropdowns(classNum-1);
+        //document.body.innerHTML += "<br><br>"
+
+        classNum++
+
+        CalculateRows()
+
+
+    }
+
+    function RemoveRow()
+   {
+       var deleteRow1 = document.getElementById("Credits" + (classNum-2))
+       var deleteRow1Label = document.getElementById("lCredits" + (classNum-2))
+       var deleteRow2 = document.getElementById("aCredits" + (classNum-2))
+       var deleteRow2Label = document.getElementById("laCredits" + (classNum-2))
+       var removeLines = document.getElementById("newLines" + (classNum -2))
+
+       //console.log("Credits" + (classNum-2).toString())
+       console.log(document.getElementById("Credits" + (classNum-2).toString()))
+        deleteRow1.parentNode.removeChild(deleteRow1);
+       deleteRow2.parentNode.removeChild(deleteRow2);
+       deleteRow1Label.parentNode.removeChild(deleteRow1Label)
+       deleteRow2Label.parentNode.removeChild(deleteRow2Label)
+       removeLines.parentNode.removeChild(removeLines)
+       classNum--;
+
+       CalculateRows()
+   }
+
+
+
+    function CalculateRows()
+    {
+
+        var totalOut = document.getElementById("totalOut")
+        var totalCredits = document.getElementById("totalCredits")
+
+        let totalQualityPoints = 0;
+        let totalCreditHours = 0;
+
+
+        for (let x = 0; x < classNum-1; x++)
+        {
+            console.log("QualityPoints " + parseFloat(document.getElementById("Credits" + x).value) * document.getElementById("aCredits" + x).value)
+
+            totalCreditHours += parseFloat(document.getElementById("Credits" + x).value)
+            console.log("TotalCreditHours " + totalCreditHours)
+
+
+            totalQualityPoints += parseFloat(document.getElementById("Credits" + x).value) * document.getElementById("aCredits" + x).value
+
+        }
+
+            console.log("TotalQualityPoints " + totalQualityPoints)
+            console.log(Math.round(((totalQualityPoints/totalCreditHours) + Number.EPSILON) * 100)/100)
+
+
+        document.body.appendChild(totalOut)
+        document.body.appendChild(totalCredits)
+
+        totalOut.className = "div div1"
+        totalCredits.className= "div div1"
+
+        totalOut.innerHTML = "GPA: " + (Math.round(((totalQualityPoints/totalCreditHours) + Number.EPSILON) * 100)/100).toString()
+        totalCredits.innerHTML ="Total Credit Hours: " + totalCreditHours.toString();
+
+
+    }
+
+
+
+
+    function addPossibleCreditsRow(x)
+    {
+        var selectList = document.createElement("select")
+        selectList.id = "Credits" +x.toString()
+        console.log(selectList.id)
+        selectList.name = "Credits" + x.toString()
+
+        var label = document.createElement("label")
+        label.setAttribute("for","Credits")
+        label.id = "lCredits" + x.toString()
+        label.innerHTML = "Credit Hours"
+        document.body.appendChild(label)
+
+        for (var i = 0; i < creditOptions.length;i++)
+        {
+            var option = document.createElement("option")
+            option.value = creditOptions[i];
+            option.text = creditOptions[i].toString()
+            selectList.appendChild(option);
+        }
+
+
+
+        document.body.appendChild(selectList)
+       // listOfPossibleCreditDropdowns.push(selectList)
+
+
+
+        //document.body.innerHTML += "&emsp;"
+
+
+
+        //console.log(listOfPossibleCreditDropdowns)
+    }
+
+
+
+    function addActualCreditDropdowns(x)
+    {
+
+       // document.body.innerHTML += "&emsp;"
+
+        var selectList = document.createElement("select")
+        selectList.id = "aCredits" +x.toString()
+        selectList.name = "aCredits" +x.toString()
+
+        var label = document.createElement("label")
+        label.setAttribute("for","Credits")
+        label.id = "laCredits" + x.toString()
+        label.innerHTML = "Grade Point"
+        document.body.appendChild(label)
+
+        for (var i = 0; i < gradeOptions.length;i++)
+        {
+            var option = document.createElement("option")
+            option.value = gradesAsCredits[i].toString();
+            option.text = gradeOptions[i].toString()
+            selectList.appendChild(option);
+        }
+
+
+
+        document.body.appendChild(selectList)
+
+        let newLines = document.createElement("blockquote")
+
+        newLines.id = "newLines" + (classNum-1)
+        newLines.innerHTML = "<br>"
+
+        document.body.appendChild(newLines);
+
+        //listOfActualCreditDropdowns.push(selectList)
+
+
+
+       // console.log(listOfActualCreditDropdowns)
+
+
+
+
+
+    }
+
+
+
+
+
+
+</script>
+</html>
